@@ -5,9 +5,9 @@ class AuthService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
   //Create user object based on firebaseUser
-    User _userFromFirebaseUser(FirebaseUser user){
-      return user != null ? User(uid: user.uid) : null;
-    }
+  User _userFromFirebaseUser(FirebaseUser user){
+    return user != null ? User(uid: user.uid) : null;
+  }
 
   //auth change user stream
   Stream<User> get user {
@@ -28,11 +28,11 @@ class AuthService {
 
   //Sign Out
   Future signOut() async {
-      try {
-        return _auth.signOut();
-      } catch(e) {
-        print(e.toString());
-        return null;
-      }
+    try {
+      return _auth.signOut();
+    } catch(e) {
+      print(e.toString());
+      return null;
+    }
   }
 }
