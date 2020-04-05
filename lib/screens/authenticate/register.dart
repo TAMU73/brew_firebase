@@ -1,35 +1,34 @@
-import 'package:brewfirebase/screens/authenticate/register.dart';
+import 'package:brewfirebase/screens/authenticate/sign_in.dart';
 import 'package:brewfirebase/services/auth.dart';
 import 'package:flutter/material.dart';
 
-class SignIn extends StatefulWidget {
+class Register extends StatefulWidget {
 
   final Function toggleView;
-  SignIn({this.toggleView});
+  Register({this.toggleView});
 
   @override
-  _SignInState createState() => _SignInState();
+  _RegisterState createState() => _RegisterState();
 }
 
-class _SignInState extends State<SignIn> {
+class _RegisterState extends State<Register> {
 
   final AuthService _auth = AuthService();
 
   String email;
   String password;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Sign In'),
+        title: Text('Sign Up'),
         actions: <Widget>[
           FlatButton.icon(
               onPressed: () {
                 widget.toggleView();
               },
               icon: Icon(Icons.person),
-              label: Text('Register'))
+              label: Text('Sign In'))
         ],
       ),
       body: Padding(
@@ -55,7 +54,7 @@ class _SignInState extends State<SignIn> {
               ),
               SizedBox(height: 20,),
               RaisedButton(
-                child: Text('Sign In'),
+                child: Text('Sign Up'),
                 onPressed: () {
                   print(email);
                   print(password);
