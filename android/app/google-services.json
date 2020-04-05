@@ -1,0 +1,69 @@
+{
+  "project_info": {
+    "project_number": "822997195446",
+    "firebase_url": "https://brew-bd397.firebaseio.com",
+    "project_id": "brew-bd397",
+    "storage_bucket": "brew-bd397.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:822997195446:android:cebd9f0842691b50446417",
+        "android_client_info": {
+          "package_name": "np.com.sanjivgrg.brewfirebase"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "822997195446-09e2r1vip8074rmpclu0n33picp0hr57.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyByausocQqHQ_2ZGRnfTTF40QaLosiC83Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "822997195446-09e2r1vip8074rmpclu0n33picp0hr57.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:822997195446:android:0557fb75cd839576446417",
+        "android_client_info": {
+          "package_name": "np.com.sanjivgrg.firebasebrewcoffee"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "822997195446-09e2r1vip8074rmpclu0n33picp0hr57.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyByausocQqHQ_2ZGRnfTTF40QaLosiC83Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "822997195446-09e2r1vip8074rmpclu0n33picp0hr57.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
