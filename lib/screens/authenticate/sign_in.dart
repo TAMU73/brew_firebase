@@ -16,17 +16,20 @@ class _SignInState extends State<SignIn> {
       appBar: AppBar(
         title: Text('Sign In'),
       ),
-      body: RaisedButton(
-        onPressed: () async {
-          dynamic result = await _auth.signInANon();
-          if(result == null) {
-            print('Error');
-          } else {
-            print(result);
-            print('Successfully Signed In');
-          }
-        },
-        child: Text('Sign In'),
+      body: Padding(
+        padding: const EdgeInsets.all(10.0),
+        child: RaisedButton(
+          onPressed: () async {
+            dynamic result = await _auth.signInANon();
+            if(result == null) {
+              print('Error');
+            } else {
+              print(result.uid);
+              print('Successfully Signed In');
+            }
+          },
+          child: Text('Sign In'),
+        ),
       ),
     );
   }
