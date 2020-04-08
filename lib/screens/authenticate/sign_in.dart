@@ -1,4 +1,3 @@
-import 'package:brewfirebase/screens/authenticate/register.dart';
 import 'package:brewfirebase/services/auth.dart';
 import 'package:flutter/material.dart';
 
@@ -14,9 +13,11 @@ class SignIn extends StatefulWidget {
 class _SignInState extends State<SignIn> {
 
   final AuthService _auth = AuthService();
+  final _formKey = GlobalKey<FormState>();
 
-  String email;
-  String password;
+  String email='';
+  String password='';
+  String error='';
 
   @override
   Widget build(BuildContext context) {
@@ -35,9 +36,11 @@ class _SignInState extends State<SignIn> {
       body: Padding(
         padding: const EdgeInsets.all(20.0),
         child: Form(
+          key: _formKey,
           child: Column(
             children: <Widget>[
-              TextField(
+              TextFormField(
+                validator: (val) => val.isEmpty ? 'Enter valid email' : null,
                 onChanged: (val) {
                   setState(() {
                     email = val;
@@ -45,7 +48,8 @@ class _SignInState extends State<SignIn> {
                 },
               ),
               SizedBox(height: 20,),
-              TextField(
+              TextFormField(
+                validator: (val) => val.length<6 ? 'Enter minimum of 6 characters' : null,
                 obscureText: true,
                 onChanged: (val) {
                   setState(() {
@@ -56,11 +60,22 @@ class _SignInState extends State<SignIn> {
               SizedBox(height: 20,),
               RaisedButton(
                 child: Text('Sign In'),
-                onPressed: () {
-                  print(email);
-                  print(password);
+                onPressed: () async {
+                  if(_formKey.currentState.validate()){
+                    dynamic result = await _auth.signInWithEmailAndPassword(email, password);
+                    if(result==null) {
+                      setState(() {
+                        error='Could not sign in';
+                      });
+                    }
+                  }
                 },
               ),
+              SizedBox(height: 10,),
+              Text(
+                error,
+                style: TextStyle(color: Colors.red),
+              )
             ],
           ),
         ),
