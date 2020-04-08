@@ -1,5 +1,6 @@
 import 'package:brewfirebase/services/auth.dart';
 import 'package:brewfirebase/shared/constant.dart';
+import 'package:brewfirebase/shared/loading.dart';
 import 'package:flutter/material.dart';
 
 class Register extends StatefulWidget {
@@ -15,6 +16,7 @@ class _RegisterState extends State<Register> {
 
   final AuthService _auth = AuthService();
   final _formKey = GlobalKey<FormState>();
+  bool loading = false;
 
   String email = '';
   String password = '';
@@ -33,7 +35,7 @@ class _RegisterState extends State<Register> {
               label: Text('Sign In'))
         ],
       ),
-      body: Padding(
+      body: loading ? Loading() : Padding(
         padding: const EdgeInsets.all(20.0),
         child: Form(
           key: _formKey,
@@ -64,9 +66,13 @@ class _RegisterState extends State<Register> {
                 child: Text('Sign Up'),
                 onPressed: () async {
                   if(_formKey.currentState.validate()){
+                    setState(() {
+                      loading = true;
+                    });
                     dynamic result = await _auth.registerWithEmailAndPassword(email, password);
                     if(result == null) {
                       setState(() {
+                        loading = false;
                         error = 'Enter valid email';
                       });
                     }

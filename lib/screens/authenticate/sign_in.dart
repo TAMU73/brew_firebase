@@ -1,5 +1,6 @@
 import 'package:brewfirebase/services/auth.dart';
 import 'package:brewfirebase/shared/constant.dart';
+import 'package:brewfirebase/shared/loading.dart';
 import 'package:flutter/material.dart';
 
 class SignIn extends StatefulWidget {
@@ -15,6 +16,7 @@ class _SignInState extends State<SignIn> {
 
   final AuthService _auth = AuthService();
   final _formKey = GlobalKey<FormState>();
+  bool loading = false;
 
   String email='';
   String password='';
@@ -34,7 +36,7 @@ class _SignInState extends State<SignIn> {
               label: Text('Register'))
         ],
       ),
-      body: Padding(
+      body: loading ? Loading() : Padding(
         padding: const EdgeInsets.all(20.0),
         child: Form(
           key: _formKey,
@@ -65,10 +67,14 @@ class _SignInState extends State<SignIn> {
                 child: Text('Sign In'),
                 onPressed: () async {
                   if(_formKey.currentState.validate()){
+                    setState(() {
+                      loading = true;
+                    });
                     dynamic result = await _auth.signInWithEmailAndPassword(email, password);
                     if(result==null) {
                       setState(() {
                         error='Could not sign in';
+                        loading = false;
                       });
                     }
                   }
