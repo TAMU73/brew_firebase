@@ -1,4 +1,5 @@
 import 'package:brewfirebase/services/auth.dart';
+import 'package:brewfirebase/shared/constant.dart';
 import 'package:flutter/material.dart';
 
 class SignIn extends StatefulWidget {
@@ -40,6 +41,7 @@ class _SignInState extends State<SignIn> {
           child: Column(
             children: <Widget>[
               TextFormField(
+                decoration: textInputDecoration.copyWith(hintText: 'Email'),
                 validator: (val) => val.isEmpty ? 'Enter valid email' : null,
                 onChanged: (val) {
                   setState(() {
@@ -49,13 +51,14 @@ class _SignInState extends State<SignIn> {
               ),
               SizedBox(height: 20,),
               TextFormField(
-                validator: (val) => val.length<6 ? 'Enter minimum of 6 characters' : null,
-                obscureText: true,
-                onChanged: (val) {
-                  setState(() {
-                    password = val;
-                  });
-                },
+                  decoration: textInputDecoration.copyWith(hintText: 'Password'),
+                  validator: (val) => val.length<6 ? 'Enter minimum of 6 characters' : null,
+                  obscureText: true,
+                  onChanged: (val) {
+                    setState(() {
+                      password = val;
+                    });
+                  },
               ),
               SizedBox(height: 20,),
               RaisedButton(
