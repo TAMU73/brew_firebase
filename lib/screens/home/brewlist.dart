@@ -1,4 +1,5 @@
 import 'package:brewfirebase/model/brew.dart';
+import 'package:brewfirebase/screens/home/brew_card.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -18,6 +19,13 @@ class _BrewListState extends State<BrewList> {
       print(brew.strength);
     });
 
-    return Container();
+    return ListView.builder(
+        itemCount: brews.length,
+        itemBuilder: (context, index) {
+          return BrewCard(
+            brew: brews[index],
+          );
+        }
+    );
   }
 }
