@@ -25,16 +25,18 @@ class _RegisterState extends State<Register> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Sign Up'),
+        title: Text('Register'),
+        backgroundColor: Colors.grey[900],
         actions: <Widget>[
           FlatButton.icon(
               onPressed: () {
                 widget.toggleView();
               },
-              icon: Icon(Icons.person),
-              label: Text('Sign In'))
+              icon: Icon(Icons.person, color: Colors.green),
+              label: Text('Sign In', style: TextStyle(color: Colors.green)))
         ],
       ),
+      backgroundColor: Colors.grey[800],
       body: loading ? Loading() : Padding(
         padding: const EdgeInsets.all(20.0),
         child: Form(
@@ -42,8 +44,38 @@ class _RegisterState extends State<Register> {
           child: Column(
             children: <Widget>[
               TextFormField(
+                decoration: textInputDecoration.copyWith(hintText: 'Full Name'),
+                validator: (val) => val.isEmpty ? 'Enter your Name' : null,
+                onChanged: (val) {
+                  setState(() {
+                    email = val;
+                  });
+                },
+              ),
+              SizedBox(height: 20,),
+              TextFormField(
                 decoration: textInputDecoration.copyWith(hintText: 'Email'),
                 validator: (val) => val.isEmpty ? 'Enter an Email' : null,
+                onChanged: (val) {
+                  setState(() {
+                    email = val;
+                  });
+                },
+              ),
+              SizedBox(height: 20,),
+              TextFormField(
+                decoration: textInputDecoration.copyWith(hintText: 'Address'),
+                validator: (val) => val.isEmpty ? 'Enter your Address' : null,
+                onChanged: (val) {
+                  setState(() {
+                    email = val;
+                  });
+                },
+              ),
+              SizedBox(height: 20,),
+              TextFormField(
+                decoration: textInputDecoration.copyWith(hintText: 'Phone Number'),
+                validator: (val) => val.isEmpty ? 'Enter your Phone Number' : null,
                 onChanged: (val) {
                   setState(() {
                     email = val;
@@ -63,7 +95,8 @@ class _RegisterState extends State<Register> {
               ),
               SizedBox(height: 20,),
               RaisedButton(
-                child: Text('Sign Up'),
+                child: Text('Register Now'),
+                color: Colors.indigo,
                 onPressed: () async {
                   if(_formKey.currentState.validate()){
                     setState(() {

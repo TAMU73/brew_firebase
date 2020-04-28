@@ -27,15 +27,17 @@ class _SignInState extends State<SignIn> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Sign In'),
+        backgroundColor: Colors.grey[900],
         actions: <Widget>[
           FlatButton.icon(
               onPressed: () {
                 widget.toggleView();
               },
-              icon: Icon(Icons.person),
-              label: Text('Register'))
+              icon: Icon(Icons.person,color: Colors.green,),
+              label: Text('Register', style: TextStyle(color: Colors.green),))
         ],
       ),
+      backgroundColor: Colors.grey[800],
       body: loading ? Loading() : Padding(
         padding: const EdgeInsets.all(20.0),
         child: Form(
@@ -65,6 +67,7 @@ class _SignInState extends State<SignIn> {
               SizedBox(height: 20,),
               RaisedButton(
                 child: Text('Sign In'),
+                color: Colors.indigo,
                 onPressed: () async {
                   if(_formKey.currentState.validate()){
                     setState(() {
